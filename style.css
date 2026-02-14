@@ -1,0 +1,439 @@
+/*
+    Breutzmann,
+    Robert CSD 340 - Web Development with HTML and CSS 
+    Assignment bioSite 
+    CSS Style Page
+*/
+
+/* Creates root color variables */
+:root {
+    --charcoal-black: #1F1F1F;
+    --steel-gray: #4A4A4A;
+    --forge-orange: #C65A1E;
+    --warm-ash: #D8D2C8;
+    --off-white: #F2F2F2;
+}
+
+/* ==================
+Cross Page Formatting 
+================== */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--charcoal-black);
+    color: var(--off-white);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--forge-orange);
+    padding: 1.5rem 2rem;
+}
+
+header h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+.navbar {
+    background-color: var(--steel-gray);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+}
+
+.navbar a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    color: var(--off-white);
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+    background-color: var(--forge-orange);
+    color: var(--off-white);
+}
+
+h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.8rem;
+    color: var(--forge-orange);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--forge-orange);
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+figcaption {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    color: var(--warm-ash);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--forge-orange);
+    color: var(--off-white);
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #a94718;
+    /* darker forge orange */
+}
+
+a {
+    color: var(--forge-orange);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+footer {
+    background-color: var(--steel-gray);
+    color: var(--off-white);
+    padding: 1rem 2rem;
+    font-size: 0.66rem;
+    /* ~2/3 normal size */
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left p {
+    line-height: 1.4;
+}
+
+.footer-right {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    text-align: right;
+}
+
+.footer-right a {
+    color: var(--forge-orange);
+    text-decoration: none;
+}
+
+.footer-right a:hover {
+    text-decoration: underline;
+}
+
+/* ==========
+Landing Page 
+=========== */
+
+
+#ProfileImage {
+    text-align: center;
+}
+
+#ProfileImage img {
+    max-width: 100%;
+    height: auto;
+}
+
+#LandingTop {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+#ProfileImage,
+#Introduction {
+    flex: 1;
+}
+
+#Highlights {
+    display: flex;
+    gap: 2rem;
+    margin: 3rem;
+}
+
+.highlight-box {
+    flex: 1;
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+/* =============
+About Josh Page 
+============= */
+#ContentPage {
+    padding: 2rem;
+}
+
+.float-image {
+    float: left;
+    width: 250px;
+    /* control size */
+    margin: 0 1.5rem 1rem 0;
+    /* space between image and text */
+}
+
+/* ===========
+Crafting Page 
+=========== */
+#CraftingPage {
+    padding: 4rem;
+}
+
+#CraftedItems {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+/* Base Grid */
+.crafted-item {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    align-items: center;
+/*  border: 2px solid red;          Used for Debugging */
+}
+
+.crafted-item p {
+    max-width: none;
+}
+
+/* Image size control */
+.crafted-image img {
+    width: 100%;
+    height: auto;
+}
+
+/* LEFT PATTERN: Image - Text - Blank */
+.left-crafted .crafted-image {
+    grid-column: 1 / span 2;
+/*  border: 2px solid blue;         Used for Debugging */
+}
+
+.left-crafted .crafted-text {
+    grid-column: 3 / span 9;
+/*  border: 2px solid green;        Used for Debugging */
+}
+
+/* RIGHT PATTERN: Blank - Text - Image */
+.right-crafted .crafted-text {
+    grid-column: 2 / span 9;
+/*  border: 2px solid green;        Used for Debugging */
+}
+
+.right-crafted .crafted-image {
+    grid-column: 11 / span 2;
+/*  border: 2px solid blue;         Used for Debugging */
+}
+
+/* ===============
+forging Links page 
+================ */
+#CraftingResources {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+    align-items: start;
+    padding: 4rem;
+}
+
+.side-image {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    top: 2rem;
+}
+
+.side-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Left rail */
+.left-image {
+    grid-column: 1 / span 2;
+}
+
+/* Center */
+.resource-content {
+    grid-column: 3 / span 8;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Right rail */
+.right-image {
+    grid-column: 11 / span 2;
+}
+
+/* Link Formatting */
+.resource-card {
+    display: block;
+    background-color: var(--steel-gray);
+    /* darker than page */
+    color: var(--off-white);
+    padding: 2rem;
+    border-radius: 8px;
+
+    text-decoration: none;
+    /* removes underline */
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease;
+}
+
+/* Hover Lift Effect */
+.resource-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+    background-color: var(--forge-orange);
+    /* highlight */
+    color: var(--charcoal-black);
+}
+
+/* Fixes that the Header and the Highlight are the same color */
+.resource-card:hover h3 {
+    color: var(--charcoal);
+}
+
+/* Heading Styling */
+.resource-card h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.resource-card p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Image Formatting */
+.side-image figure {
+    margin: 0;
+}
+
+.side-image figcaption {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    color: var(--warm-ash);
+    text-align: center;
+}
+
+.side-image figcaption a {
+    color: var(--forge-orange);
+    text-decoration: none;
+}
+
+.side-image figcaption a:hover {
+    text-decoration: underline;
+}
+
+/* These two will "stagger" the images by about 10 pixels alternating */
+.side-image img:nth-child(odd) {
+    transform: translateX(-5px);
+}
+
+.side-image img:nth-child(even) {
+    transform: translateX(5px);
+}
+
+/* ================
+Working With Autism
+================ */
+#AutismResources {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 3rem 2rem;
+}
+
+#AutismTopBar {
+    display: grid;
+    grid-template-columns: 3fr 6fr 3fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.autism-card {
+    display: block;
+    background-color: var(--warm-ash);
+    color: var(--charcoal-black);
+    padding: 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.autism-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    background-color: var(--forge-orange);
+    color: var(--charcoal-black);
+}
+
+.autism-card:hover h3 {
+    color: var(--steel-gray)
+}
+
+.autism-card h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.autism-card p {
+    margin: 0;
+    line-height: 1.4;
+}
