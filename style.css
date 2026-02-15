@@ -187,19 +187,6 @@ Landing Page
     text-align: center;
 }
 
-.btn {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #333;
-    color: #fff;
-    text-decoration: none;
-}
-
-.btn:hover {
-    background-color: #555;
-}
-
 /* =============
 About Josh Page 
 ============= */
@@ -343,7 +330,7 @@ forging Links page
 
 /* Fixes that the Header and the Highlight are the same color */
 .resource-card:hover h3 {
-    color: var(--charcoal);
+    color: var(--charcoal-black);
 }
 
 /* Heading Styling */
