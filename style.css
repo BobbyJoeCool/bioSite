@@ -5,13 +5,27 @@
     CSS Style Page
 */
 
-/* Creates root color variables */
+/* Creates root color variables and heights for fixed elements*/
 :root {
     --charcoal-black: #1F1F1F;
     --steel-gray: #4A4A4A;
     --forge-orange: #C65A1E;
     --warm-ash: #D8D2C8;
     --off-white: #F2F2F2;
+    --header-height: 80px;
+    --navbar-height: 50px;
+    --footer-height: 70px;
+}
+
+/* Enforces Sizing of containers to INCLUDE padding and borders */
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
 /* ==================
@@ -23,25 +37,37 @@ body {
     background-color: var(--charcoal-black);
     color: var(--off-white);
     line-height: 1.6;
+    padding-bottom: var(--footer-height);
 }
 
 header {
     background-color: var(--forge-orange);
-    padding: 1.5rem 2rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Keeps this above other content. */
+    height: var(--header-height);
 }
 
 header h1 {
+    margin: 0;
     font-family: Georgia, "Times New Roman", serif;
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
 }
+
 .navbar {
     background-color: var(--steel-gray);
+    position: sticky;
+    top: 0; /* Sticks to the top when reached */
+    height: var(--navbar-height);
     display: flex;
     justify-content: center;
     gap: 1rem;
-    padding: 0.5rem 0;
+    padding: 0 1rem;
+    z-index: 999; /* Just BELOW the header */
 }
 
 .navbar a {
@@ -56,11 +82,6 @@ header h1 {
 .navbar a:hover {
     background-color: var(--forge-orange);
     color: var(--off-white);
-}
-
-h1 {
-    font-family: Georgia, "Times New Roman", serif;
-    margin-bottom: 1rem;
 }
 
 h2 {
@@ -99,8 +120,7 @@ figcaption {
 }
 
 .btn:hover {
-    background-color: #a94718;
-    /* darker forge orange */
+    background-color: #a94718;          /* darker forge orange */
 }
 
 a {
@@ -118,12 +138,16 @@ img {
 }
 
 footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--footer-height);   
+    z-index: 1000;                          /* Keeps this above other content. */
     background-color: var(--steel-gray);
     color: var(--off-white);
     padding: 1rem 2rem;
-    font-size: 0.66rem;
-    /* ~2/3 normal size */
-
+    font-size: 0.66rem;                     /* ~2/3 normal size */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -135,7 +159,7 @@ footer {
 
 .footer-right {
     display: flex;
-    gap: 0.5rem;
+    gap: 2rem;
     flex-direction: column;
     text-align: right;
 }
@@ -152,8 +176,6 @@ footer {
 /* ==========
 Landing Page 
 =========== */
-
-
 #ProfileImage {
     text-align: center;
 }
@@ -241,6 +263,7 @@ Crafting Page
 
 .left-crafted .crafted-text {
     grid-column: 3 / span 9;
+    padding-left: 10px;
 /*  border: 2px solid green;        Used for Debugging */
 }
 
@@ -252,6 +275,7 @@ Crafting Page
 
 .right-crafted .crafted-image {
     grid-column: 11 / span 2;
+    padding-right: 10px;
 /*  border: 2px solid blue;         Used for Debugging */
 }
 
@@ -260,56 +284,58 @@ forging Links page
 ================ */
 #CraftingResources {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: 25vw  1fr  25vw;
     gap: 2rem;
     align-items: start;
-    padding: 4rem;
+    padding-top: 20px;
+
+    height: calc(
+        100vh 
+        - var(--header-height) 
+        - var(--navbar-height) 
+    );
 }
 
+/* Sides */
 .side-image {
+    position: relative;         /* pins it to viewport, under the Banner */
+    top: 0;                     /* below top of page content */
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    position: sticky;
-    top: 2rem;
-}
-
-.side-image img {
-    width: 100%;
     height: auto;
-    display: block;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
-/* Left rail */
 .left-image {
-    grid-column: 1 / span 2;
+    grid-column: 1;
+    margin: 1rem;
+}
+
+.right-image {
+    grid-column: 3;
+    margin: 1rem;
 }
 
 /* Center */
 .resource-content {
-    grid-column: 3 / span 8;
+    grid-column: 2;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-}
-
-/* Right rail */
-.right-image {
-    grid-column: 11 / span 2;
+    overflow: visible;
+    height: auto;
+    padding-top: 50px;
+    padding-bottom: var(--footer-height);
 }
 
 /* Link Formatting */
 .resource-card {
     display: block;
-    background-color: var(--steel-gray);
-    /* darker than page */
+    background-color: var(--steel-gray);     /* darker than page */
     color: var(--off-white);
     padding: 2rem;
     border-radius: 8px;
 
-    text-decoration: none;
-    /* removes underline */
+    text-decoration: none;                  /* removes underline */
 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 
@@ -323,8 +349,7 @@ forging Links page
 .resource-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
-    background-color: var(--forge-orange);
-    /* highlight */
+    background-color: var(--forge-orange);          /* highlight */
     color: var(--charcoal-black);
 }
 
@@ -350,29 +375,39 @@ forging Links page
     margin: 0;
 }
 
-.side-image figcaption {
+.side-image img {
+    width: 90%;                                 /* 90% width of sidebar */
+    min-width: 150px;
+    max-width: 400px;
+
+    height: calc((100vh 
+            - var(--navbar-height)) / 4);       /* navbar height subtracted */    
+    min-height: 120px;
+    max-height: 350px;
+
+    object-fit: cover;                          /* crop sides if needed */
+}
+
+.side-image figcaption a {
+    color: var(--forge-orange);
+    text-decoration: none;
     font-size: 0.75rem;
     margin-top: 0.5rem;
     color: var(--warm-ash);
     text-align: center;
 }
 
-.side-image figcaption a {
-    color: var(--forge-orange);
-    text-decoration: none;
-}
-
 .side-image figcaption a:hover {
     text-decoration: underline;
 }
 
-/* These two will "stagger" the images by about 10 pixels alternating */
+/* These two will "stagger" the images by about 40 pixels alternating */
 .side-image img:nth-child(odd) {
-    transform: translateX(-5px);
+    transform: translateX(-20px);
 }
 
 .side-image img:nth-child(even) {
-    transform: translateX(5px);
+    transform: translateX(20px);
 }
 
 /* ================
@@ -386,11 +421,15 @@ Working With Autism
 }
 
 #AutismTopBar {
-    display: grid;
-    grid-template-columns: 3fr 6fr 3fr;
     align-items: center;
     gap: 1rem;
     padding: 2rem 0;
+    overflow: hidden;
+}
+
+#AutismTopBar img {
+    width: 100%;
+    height: auto;
 }
 
 .autism-card {
