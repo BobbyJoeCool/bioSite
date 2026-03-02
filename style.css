@@ -85,12 +85,12 @@ header h1 {
 
 .navbar {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
     padding: 0 1rem;
     position: sticky;
     top: 0;                         /* Sticks to the top when reached */
-    height: var(--navbar-height);
     z-index: 999;                   /* Just BELOW the header */
 
     background-color: var(--steel-gray);
@@ -220,16 +220,26 @@ Landing Page
 
 #Highlights {
     display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
     margin: 3rem;
 }
 
 .highlight-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     flex: 1;
+
     padding: 1.5rem;
+    min-width: 300px;
 
     border: 1px solid #ccc;
     text-align: center;
+}
+
+.highlight-box button {
+    min-width: 120px;
 }
 
 /* =============
@@ -275,6 +285,30 @@ Crafting Page
 
 .right-crafted {
     align-self: flex-end;
+}
+
+/* -----------------------------
+   Responsive layout for small screens
+--------------------------------- */
+@media (max-width: 800px) {
+    .crafted-item {                    
+        flex-direction: column;
+        align-items: center;                /* stack items at top of container */
+        width: 100%;
+        gap: 1rem;                          /* reduce spacing for narrow screens */
+    }
+
+    .left-crafted {
+        flex-direction: column;             /* normal vertical stacking */
+        align-items: center;
+        align-self: stretch;
+    }
+
+    .right-crafted {
+        flex-direction: column-reverse;     /* REVERSE order on small screens */
+        align-items: center;
+        align-self: stretch;
+    }
 }
 
 .crafted-text {
@@ -337,6 +371,25 @@ forging Links page
     grid-column: 2;
     height: auto;
     padding-top: 50px;
+}
+
+/* -----------------------------
+   Responsive layout for small screens
+--------------------------------- */
+@media (max-width: 800px) {
+
+    /* hide side images */
+    .side-image {
+        display: none;
+    }
+
+    /* adjust center content */
+    .resource-content {
+        grid-column: 1 / -1;        /* span full width */
+        padding-top: 20px;          /* optional: smaller top padding */
+        align-items: center;        /* center items horizontally */
+        gap: 1.5rem;                /* slightly smaller gap for mobile */
+    }
 }
 
 /* Link Formatting */
