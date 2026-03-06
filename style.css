@@ -203,7 +203,8 @@ Landing Page
 }
 
 #ProfileImage img {
-    max-width: 100%;
+    max-width: 400px;
+    min-width: 200px;
     height: auto;
 }
 
@@ -211,6 +212,12 @@ Landing Page
     display: flex;
     align-items: center;
     gap: 2rem;
+}
+
+@media (max-width: 700px) {
+    #LandingTop {
+        flex-direction: column;
+    }
 }
 
 #ProfileImage,
